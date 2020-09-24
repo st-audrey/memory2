@@ -1,30 +1,4 @@
-class Card extends HTMLElement {
 
-    constructor() {
-        super();
-        this.createCard();
-        this.initListeners();
-    }
-    initListeners() {
-        this.onclick = function () {
-            var event = new CustomEvent('cardClicked', { 'detail': 'toto' });
-            this.dispatchEvent(event);
-            console.log('toto');
-        }
-    }
-    createCard() {       
-        this.setAttribute("data-match", "");
-        this.setAttribute("class", "memory-card");
-        var recto = document.createElement("IMG");
-        var verso = document.createElement("IMG");
-        recto.setAttribute("src" , "images/dos.jpg");
-        verso.setAttribute("src" , "https://picsum.photos/200/300?random=");
-        this.appendChild(recto);
-        this.appendChild(verso);
-
-    }
-}
-customElements.define('memory-card', Card);
 
 (function () {
 
@@ -39,8 +13,11 @@ customElements.define('memory-card', Card);
         cardClicked(ev);
     });
 
-    document.body.appendChild(card);
-    console.log(card);
+    var board = document.getElementById("memory-board");
+    board.appendChild(card);
+
+    //document.body.appendChild(card);
+    //console.log(card);
 
 
 })();
