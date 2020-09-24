@@ -1,7 +1,7 @@
 
 (function () {
 
-    new Game(3,1);
+    new Game(1,1);
 
     //card.addEventListener('cardClicked', function (ev) {
         //cardClicked(ev);

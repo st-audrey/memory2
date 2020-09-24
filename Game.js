@@ -5,26 +5,29 @@ class Game {
         this.life = life;
         this.hasFlippedCard = false;
         this.isLocked = false;
-        this.initBoard();
+        this.successPair = 0;
+        this.initBoard(level);
     }
 
     initBoard() {
-        var nbPair = 0;
+        this.nbPair = 0;
         var board = document.getElementById("memory-board");
+        board.innerHTML = "";
+        this.successPair = 0;
 
         if (this.level == 1) {
-            nbPair = 2;
+            this.nbPair = 2;
         } else if (this.level == 2) {
             board.setAttribute("style", "width: 640px;");
-            nbPair = 4;
+            this.nbPair = 4;
         }else if (this.level == 3) {
             board.setAttribute("style", "width: 960px;");
-            nbPair = 6;
+            this.nbPair = 6;
         }
         
         var tab = [];
 
-        for (let i = 0; i < nbPair; i++) {
+        for (let i = 0; i < this.nbPair; i++) {
             let card = new Card(i, this);
             let card2 = new Card(i, this);
 
@@ -70,10 +73,22 @@ class Game {
         if (isMatch) {
             this.firstCard.paired();
             card.paired()
+            this.successPair++;
+            if (this.successPair == this.nbPair) {
+                this.level++;
+                this.life++;
+                setTimeout(() => {
+                    this.initBoard();
+                }, 1500);
+            }
         } else {
             this.isLocked = true;
             this.firstCard.noMatch();
             card.noMatch();
+            this.life--;
+            if (this.life == 0) {
+                alert('Game Over');
+            }
         }
     }
 
