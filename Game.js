@@ -4,6 +4,7 @@ class Game {
         this.level = level;
         this.life = life;
         this.hasFlippedCard = false;
+        this.isLocked = false;
         this.initBoard();
     }
 
@@ -24,8 +25,8 @@ class Game {
         var tab = [];
 
         for (let i = 0; i < nbPair; i++) {
-            let card = new Card(i);
-            let card2 = new Card(i);
+            let card = new Card(i, this);
+            let card2 = new Card(i, this);
 
             tab.push(card);
             tab.push(card2);
@@ -50,7 +51,7 @@ class Game {
 
     }
 
-    handleClickedCard(card, promise) {
+    handleClickedCard(card) {
         
         //if (lockBoard) return;
         //if (this === firstCard) return; 
@@ -58,21 +59,25 @@ class Game {
         if (!this.hasFlippedCard) {
             //premier click
             this.hasFlippedCard = true;
-            this.dataFirstCard = card;
-            this.promiseFirstCard = promise;       
+            this.firstCard = card;      
             return;
         }
         //deuxieme click
         this.hasFlippedCard = false;
 
         //on match
-        let isMatch = this.dataFirstCard === card;
+        let isMatch = this.firstCard.dataset.match === card.dataset.match;
         if (isMatch) {
-            this.promiseFirstCard.resolve();
-            promise.resolve();
+            this.firstCard.paired();
+            card.paired()
         } else {
-            this.promiseFirstCard.reject();
-            promise.reject();
+            this.isLocked = true;
+            this.firstCard.noMatch();
+            card.noMatch();
         }
+    }
+
+    unlock() {
+        this.isLocked = false;
     }
 }

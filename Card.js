@@ -8,23 +8,24 @@ class Card extends HTMLElement {
     }
     initListeners() {
         this.onclick = function () {
-            //var event = new CustomEvent('cardClicked', { 'detail': 'toto' });
-            //this.dispatchEvent(event);
- 
-            this.classList.add('flip'); 
-
-            var promise = Promise(function (resolve, reject));
-            promise.then(function() {
-                // si la promesse est tenue, cette carte est gardee retournee
-                // mettre a jour game => attente nouvelle premiere carte
-            }).catch(function() {
-                //si la promesse n'estp as tenue, on retourne cette carte
-                // mettre a jour game => attente nouvelle premiere carte
-            });
-
-            game.handleClickedCard(this.dataset.match, promise);
+            if (!this.game.isLocked) {
+                this.classList.add('flip');
+                this.game.handleClickedCard(this);
+            }
         }
     }
+
+    paired() {
+        this.onclick = null; 
+    }
+
+    noMatch() {
+        setTimeout(() => {
+            this.classList.remove("flip");
+            this.game.unlock();
+        }, 1500);
+    }
+
     createCard(i) {
         this.setAttribute("data-match", i.toString());
         this.setAttribute("class", "memory-card");
