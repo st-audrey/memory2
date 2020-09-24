@@ -8,9 +8,9 @@ class Game {
     win = false;
     end = false;
 
-    createDivCol(col){
+    createDivCol(){
         var divColElt = document.createElement("div");
-        divColElt.setAttribute("class", "mb-5 col" + col);
+        divColElt.setAttribute("class", "content-card");
         return divColElt;
     }
 
@@ -39,13 +39,13 @@ class Game {
         var randomCards = this.randomizeCards();
         if(randomCards.length > 0){
             for(var i = 0; i < randomCards.length; i++){
-                var divCol = this.createDivCol(3);
+                var divCol = this.createDivCol();
 
-                document.querySelector("#test").appendChild(divCol);
+                //document.querySelector("#main").appendChild(divCol);
 
 
 
-                divCol.appendChild(randomCards[i]);
+                document.querySelector("#main").appendChild(randomCards[i]);
             }
         }
 

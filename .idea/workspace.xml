@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ad8fdb5-f352-4ed2-87cc-c5c2797f77ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/Card.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600941650436</updated>
       <workItem from="1600941651652" duration="269000" />
-      <workItem from="1600941925528" duration="7795000" />
+      <workItem from="1600941925528" duration="9035000" />
     </task>
     <servers />
   </component>
