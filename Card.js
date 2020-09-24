@@ -1,8 +1,8 @@
 class Card extends HTMLElement {
 
-    constructor() {
+    constructor(i) {
         super();
-        this.createCard();
+        this.createCard(i);
         this.initListeners();
     }
     initListeners() {
@@ -13,18 +13,17 @@ class Card extends HTMLElement {
             this.classList.add('flip'); 
         }
     }
-    createCard() {
-        this.setAttribute("data-match", "");
+    createCard(i) {
+        this.setAttribute("data-match", i.toString());
         this.setAttribute("class", "memory-card");
         var verso = document.createElement("IMG");
         verso.setAttribute("class", "verso");
         var recto = document.createElement("IMG");
         recto.setAttribute("class", "recto");
         verso.setAttribute("src", "images/hearthstone.jpg");
-        recto.setAttribute("src", "https://picsum.photos/200/300?random=");
+        recto.setAttribute("src", "https://picsum.photos/200/300?random=" + i);
         this.appendChild(verso);
         this.appendChild(recto);
-
     }
 }
 customElements.define('memory-card', Card);

@@ -1,21 +1,17 @@
 
-
 (function () {
-
 
     function cardClicked(ev) {
         console.log(ev);
     }
 
-    card = new Card;
+    new Game(3,1);
 
-    card.addEventListener('cardClicked', function (ev) {
-        cardClicked(ev);
-    });
+    //card.addEventListener('cardClicked', function (ev) {
+        //cardClicked(ev);
+    //});
 
-    var board = document.getElementById("memory-board");
-    board.appendChild(card);
-
+   
     //document.body.appendChild(card);
     //console.log(card);
 
