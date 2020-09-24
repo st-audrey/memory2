@@ -14,6 +14,7 @@ class Card extends HTMLElement {
     }
     createCard() {       
         this.setAttribute("data-match", "");
+        this.setAttribute("class", "memory-card");
         var recto = document.createElement("IMG");
         var verso = document.createElement("IMG");
         recto.setAttribute("src" , "images/dos.jpg");
