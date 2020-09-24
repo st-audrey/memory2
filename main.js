@@ -1,13 +1,13 @@
 
 
-(function () {
+/*(function () {
 
 
     function cardClicked(ev) {
         console.log(ev);
     }
 
-    card = new Card;
+    //card = new Card;
 
     card.addEventListener('cardClicked', function (ev) {
         cardClicked(ev);
@@ -20,4 +20,7 @@
     //console.log(card);
 
 
-})();
+})();*/
+
+var game = new Game();
+game.displayCards();
