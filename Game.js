@@ -3,6 +3,7 @@ class Game {
     constructor(level, life) {
         this.level = level;
         this.life = life;
+        this.hasFlippedCard = false;
         this.initBoard();
     }
 
@@ -47,5 +48,31 @@ class Game {
             board.appendChild(tabShuffle[i]);
         }
 
+    }
+
+    handleClickedCard(card, promise) {
+        
+        //if (lockBoard) return;
+        //if (this === firstCard) return; 
+
+        if (!this.hasFlippedCard) {
+            //premier click
+            this.hasFlippedCard = true;
+            this.dataFirstCard = card;
+            this.promiseFirstCard = promise;       
+            return;
+        }
+        //deuxieme click
+        this.hasFlippedCard = false;
+
+        //on match
+        let isMatch = this.dataFirstCard === card;
+        if (isMatch) {
+            this.promiseFirstCard.resolve();
+            promise.resolve();
+        } else {
+            this.promiseFirstCard.reject();
+            promise.reject();
+        }
     }
 }
