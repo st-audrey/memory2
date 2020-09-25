@@ -1,18 +1,19 @@
 class Game {
     cards = [];
-    pair = 2;
+    pair = 6;
     level = 1;
     chosenCards = [];
     nbClick = 0;
     lives = 1;
     win = false;
     end = false;
+    showTmp = 5000;
 
-    createDivCol(){
+    /*createDivCol(){
         var divColElt = document.createElement("div");
         divColElt.setAttribute("class", "content-card");
         return divColElt;
-    }
+    }*/
 
     randomizeCards(){
         var i,
@@ -38,21 +39,31 @@ class Game {
 
         var randomCards = this.randomizeCards();
         if(randomCards.length > 0){
-            for(var i = 0; i < randomCards.length; i++){
-                var divCol = this.createDivCol();
+            for(var j = 0; j < randomCards.length; j++){
 
-                //document.querySelector("#main").appendChild(divCol);
+                /*var divCol = this.createDivCol();
+                document.querySelector("#main").appendChild(divCol);*/
 
-
-
-                document.querySelector("#main").appendChild(randomCards[i]);
+                document.querySelector("#main").appendChild(randomCards[j]);
+                this.showAllCards();
             }
         }
 
     }
 
-    showCards(){
-
+    showAllCards(){
+        var tmp = this.showTmp;
+        var cards = document.getElementsByClassName("memory-card");
+        setTimeout(function () {
+            for (var i=0;i<cards.length;i++){
+                cards[i].className = "memory-card flip";
+            }
+            setTimeout(function () {
+                for (var j=0;j<cards.length;j++){
+                    cards[j].className = "memory-card";
+                }
+            }, tmp)
+        }, 1500)
     }
 
     isIdentic(){
