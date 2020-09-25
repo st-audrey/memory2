@@ -53,6 +53,21 @@ class Game {
             board.appendChild(tabShuffle[i]);
         }
 
+        var allCards = document.querySelectorAll(".memory-card");
+
+        setTimeout(() => {
+            for (let i = 0; i < allCards.length; i++) {             
+                allCards[i].classList.add("flip");  
+                console.log(allCards[i]);
+            }        
+        }, 1500);
+
+        setTimeout(() => {
+        for (let i = 0; i < allCards.length; i++) {        
+            allCards[i].classList.remove("flip");
+            console.log(allCards[i]);
+            }          
+        }, 4500);
     }
 
     showLife(life) {

@@ -30,13 +30,14 @@ class Card extends HTMLElement {
         this.setAttribute("data-match", i.toString());
         this.setAttribute("class", "memory-card");
         var verso = document.createElement("IMG");
-        verso.setAttribute("class", "verso");
+        verso.classList.add('verso');
         var recto = document.createElement("IMG");
-        recto.setAttribute("class", "recto");
+        recto.classList.add('recto');
         verso.setAttribute("src", "images/skull.png");
         recto.setAttribute("src", "https://picsum.photos/200/300?random=" + i);
         this.appendChild(verso);
         this.appendChild(recto);
     }
+
 }
 customElements.define('memory-card', Card);
