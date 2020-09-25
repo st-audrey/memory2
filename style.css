@@ -12,12 +12,12 @@ body {
 #memory-board {
     width: 320px;
     height: 420px;
-    margin:auto;
-    background-color: #ae6e6e;
-    display:flex;
-    flex-wrap:wrap;
-    perspective:1000px;
-    border-radius:3px;
+    margin: auto;
+    /*background-color: #ae6e6e;*/
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    border-radius: 3px;
 }
 
 .memory-card {
@@ -25,7 +25,7 @@ body {
     height: 200px;
     background-color: #9d0606;
     margin: 5px;
-    border: 2px solid #501515;
+    border: 2px solid darkgrey;
     border-radius: 8px;
     position: relative;
     transform: scale(1);
@@ -53,4 +53,10 @@ body {
 
 .recto {
     transform: rotateY(180deg);
+}
+
+.vie {
+    width: 40px;
+    height: 40px;
+   
 }

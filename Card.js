@@ -33,7 +33,7 @@ class Card extends HTMLElement {
         verso.setAttribute("class", "verso");
         var recto = document.createElement("IMG");
         recto.setAttribute("class", "recto");
-        verso.setAttribute("src", "images/hearthstone.jpg");
+        verso.setAttribute("src", "images/skull.png");
         recto.setAttribute("src", "https://picsum.photos/200/300?random=" + i);
         this.appendChild(verso);
         this.appendChild(recto);

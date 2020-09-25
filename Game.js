@@ -7,6 +7,7 @@ class Game {
         this.isLocked = false;
         this.successPair = 0;
         this.initBoard(level);
+        this.showLife(life);
     }
 
     initBoard() {
@@ -54,6 +55,18 @@ class Game {
 
     }
 
+    showLife(life) {
+        var lifeCount = document.getElementById("memory-life");
+        lifeCount.innerHTML = "";
+        for (let i = 0; i <life; i++) {
+            
+            var lifePic = document.createElement("IMG");
+            lifePic.className = "vie";
+            lifePic.setAttribute("src", "images/vie.png");
+            lifeCount.appendChild(lifePic);
+        }
+    }
+
     handleClickedCard(card) {
         
         //if (lockBoard) return;
@@ -73,10 +86,15 @@ class Game {
         if (isMatch) {
             this.firstCard.paired();
             card.paired()
+            this.life++;
+            this.showLife(this.life);
+            console.log(this.life);
+
             this.successPair++;
             if (this.successPair == this.nbPair) {
                 this.level++;
-                this.life++;
+               
+                
                 setTimeout(() => {
                     this.initBoard();
                 }, 1500);
@@ -85,7 +103,11 @@ class Game {
             this.isLocked = true;
             this.firstCard.noMatch();
             card.noMatch();
-            this.life--;
+            this.life--
+
+            this.showLife(this.life);
+            console.log(this.life);
+
             if (this.life == 0) {
                 alert('Game Over');
             }
