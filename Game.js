@@ -1,6 +1,6 @@
 class Game {
     cards = [];
-    pair = 6;
+    pair = 3;
     level = 1;
     chosenCards = [];
     nbClick = 0;
@@ -8,12 +8,8 @@ class Game {
     win = false;
     end = false;
     showTmp = 5000;
-
-    /*createDivCol(){
-        var divColElt = document.createElement("div");
-        divColElt.setAttribute("class", "content-card");
-        return divColElt;
-    }*/
+    cardSelected = null;
+    inter = null;
 
     randomizeCards(){
         var i,
@@ -29,45 +25,106 @@ class Game {
         return this.cards;
     }
 
-    displayCards(){
-        for(var i = 0; i < this.pair; i++){
-            var card = new Card(i);
-            var cardMirror = new Card(i);
-            this.cards.push(card);
-            this.cards.push(cardMirror);
-        }
-
-        var randomCards = this.randomizeCards();
-        if(randomCards.length > 0){
-            for(var j = 0; j < randomCards.length; j++){
-
-                /*var divCol = this.createDivCol();
-                document.querySelector("#main").appendChild(divCol);*/
-
-                document.querySelector("#main").appendChild(randomCards[j]);
-                this.showAllCards();
+    getImgFromUrl(url) {
+        return new Promise( function(resolve, reject){
+            var i = new Image();
+            i.src = url;
+            i.onload = function(){
+                resolve(i);
             }
+        });
+    }
+
+    promiseMeImgs(tabUrl){
+        var promises = [];
+        for ( let i = 0; i < tabUrl.length; i++){
+            promises.push( this.getImgFromUrl( tabUrl[i] ) )
+        }
+        return Promise.all(promises);
+    }
+
+    displayCards(){
+        var me = this;
+        var urls = [];
+        for(var i = 0; i < this.pair; i++){
+            urls.push( "https://picsum.photos/200/300?random="+i );
         }
 
+        return this.promiseMeImgs(urls)
+            .then( function( imgs ){
+                for (var i = 0; i < imgs.length; i++) {
+                    var img = imgs[i];
+                    var img2 = img.cloneNode( true );
+                    me.cards.push(new Card(i, img), new Card(i, img2));
+                }
+                var randomCards = me.randomizeCards();
+                if(randomCards.length > 0){
+                    for(var j = 0; j < randomCards.length; j++){
+
+                        /*var divCol = this.createDivCol();
+                        document.querySelector("#main").appendChild(divCol);*/
+
+                        document.querySelector("#main").appendChild(randomCards[j]);
+                        me.showAllCards();
+                    }
+                }
+            });
     }
 
     showAllCards(){
-        var tmp = this.showTmp;
-        var cards = document.getElementsByClassName("memory-card");
-        setTimeout(function () {
-            for (var i=0;i<cards.length;i++){
-                cards[i].className = "memory-card flip";
-            }
-            setTimeout(function () {
-                for (var j=0;j<cards.length;j++){
-                    cards[j].className = "memory-card";
+        var cards = this.cards;
+        return new Promise(function(resolve, reject){
+            setTimeout(function(){
+                for (var i=0;i < cards.length;i++){
+                    cards[i].show();
                 }
-            }, tmp)
-        }, 1500)
+                setTimeout(function () {
+                    for (var j=0;j<cards.length;j++){
+                        cards[j].hide();
+                        cards[j].disabled = false;
+                    }
+                }, 500)
+            },500)
+        })
     }
 
-    isIdentic(){
+    promiseMyTwin(ev) {
+        var me = this;
+        return new Promise(function(resolve, reject){
+            if (!me.cardSelected) {
+                me.cardSelected = ev.detail;
+                me.inter = setTimeout( function(){
+                    resolve( { win : false } );
+                }, 5000);
+            } else {
+                clearTimeout(me.inter);
+                me.inter = null;
+                if (me.cardSelected === ev.detail ){
+                    resolve( { win : true , cardSelected: me.cardSelected, cardClicked : ev.detail } );
+                } else {
+                    resolve( { win : false } );
+                }
+            }
+        });
+    }
 
+    cardIsClicked(ev){
+        var me = this;
+        this.promiseMyTwin(ev).then( function(result){
+            console.log(result);
+            me.cardSelected = null;
+        });
+
+    }
+    isPair(){
+        var me = this;
+        console.log(this.cards.length);
+        for(var i = 0; i < this.cards.length; i++) {
+            let c = this.cards[i];
+            c.addEventListener("cardClicked", function(e){
+                me.cardIsClicked(e);
+            })
+        }
     }
 
     addPair(){

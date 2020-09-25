@@ -23,4 +23,6 @@
 })();*/
 
 var game = new Game();
-game.displayCards();
+game.displayCards().then( function() {
+    game.isPair();
+});

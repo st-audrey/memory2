@@ -1,24 +1,34 @@
 class Card extends HTMLElement {
     id;
+    disabled = true;
 
-    constructor(id) {
+    constructor(id, img) {
         super();
         this.id = id;
+        this.img = img;
         this.createCard();
         this.initListeners();
+    }
+
+    initListeners() {
+        var me = this;
+        this.onclick = function () {
+
+            if(!me.disabled){
+                me.show();
+                var event = new CustomEvent('cardClicked', { 'detail': this.id } );
+                me.dispatchEvent(event);
+            }
+        }
+
     }
 
     show() {
         this.classList.add('flip');
     }
 
-    initListeners() {
-        this.onclick = function () {
-            var event = new CustomEvent('cardClicked', { 'detail': 'toto' });
-            this.dispatchEvent(event);
-            console.log(this.id);
-            this.show();
-        }
+    hide(){
+        this.classList.remove("flip");
     }
 
     createCard() {
@@ -26,12 +36,14 @@ class Card extends HTMLElement {
         this.setAttribute("class", "memory-card");
         var verso = document.createElement("img");
         verso.setAttribute("class", "verso img-size");
-        var recto = document.createElement("img");
-        recto.setAttribute("class", "recto img-size");
         verso.setAttribute("src", "images/hearthstone.jpg");
-        recto.setAttribute("src", "https://picsum.photos/200/300?random=" + this.id);
+
+        var recto = this.img;
+        recto.setAttribute("class", "recto img-size");
+
         this.appendChild(verso);
         this.appendChild(recto);
     }
 }
+
 customElements.define('memory-card', Card);
