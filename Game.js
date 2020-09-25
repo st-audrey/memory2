@@ -58,14 +58,12 @@ class Game {
         setTimeout(() => {
             for (let i = 0; i < allCards.length; i++) {             
                 allCards[i].classList.add("flip");  
-                console.log(allCards[i]);
             }        
         }, 1500);
 
         setTimeout(() => {
         for (let i = 0; i < allCards.length; i++) {        
             allCards[i].classList.remove("flip");
-            console.log(allCards[i]);
             }          
         }, 4500);
     }
@@ -103,13 +101,14 @@ class Game {
             card.paired()
             this.life++;
             this.showLife(this.life);
-            console.log(this.life);
 
             this.successPair++;
             if (this.successPair == this.nbPair) {
                 this.level++;
-               
-                
+
+                var levelUp = document.getElementById("memory-lvl");
+                levelUp.innerText = "lvl " + this.level;
+
                 setTimeout(() => {
                     this.initBoard();
                 }, 1500);
@@ -121,7 +120,7 @@ class Game {
             this.life--
 
             this.showLife(this.life);
-            console.log(this.life);
+
 
             if (this.life == 0) {
                 alert('Game Over');
