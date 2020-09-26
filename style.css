@@ -57,11 +57,59 @@ body {
 
 .vie {
     width: 40px;
-    height: 40px;
-   
+    height: 40px;  
 }
 
 .txt-lvl {
-    font-family: 'Permanent Marker', cursive;
-    font-size:40px;
+    font-family: 'Fascinate', cursive;
+    font-size: 40px;
+}
+
+#txt-start {
+    visibility: visible;
+    font-family: 'Fascinate', cursive;
+    font-size: 30px;
+}
+
+#txt-title {
+    font-family: 'Fascinate', cursive;
+    font-size: 88px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+#logo {
+    overflow: hidden;
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;    
+    margin-top:140px;
+    margin-left: 40%;
+}
+
+.row-start {
+    background-image: url(images/welcome.jpg);
+    height: 230px;
+    border-radius:15px;
+}
+
+.img-tuto {
+    width:200px;
+}
+
+.vie-tuto {
+    width: 50px;
+    margin-top:20px;
+}
+
+.txt-tuto {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+.container-game {
+    /*background-image: url(images/background3.jpg);
+    background-size: 1100px;
+    background-position: center;
+    background-repeat: no-repeat;*/
 }
