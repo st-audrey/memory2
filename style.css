@@ -111,10 +111,10 @@ body {
     position: absolute;
     width: 150px;
     border-radius: 50%;
-    transform: rotate(-58deg);
+    transform: rotate(-64deg);
     z-index: 1;
-    margin-top: 215px;
-    margin-left: 295px;
+    margin-top: 227px;
+    margin-left: 294px;
 }
 
 h2 span {
@@ -203,6 +203,23 @@ h2 span {
 
 .char19 {
     transform: rotate(114deg);
+}
+
+.char20 {
+    transform: rotate(120deg);
+}
+
+.char21 {
+    transform: rotate(126deg);
+}
+
+.modal-title {
+    font-family: 'Fascinate', cursive;
+    font-size: 26px;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
 }
 
 .container-game {
