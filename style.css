@@ -107,6 +107,104 @@ body {
     font-size: 18px;
 }
 
+.badge {
+    position: absolute;
+    width: 150px;
+    border-radius: 50%;
+    transform: rotate(-58deg);
+    z-index: 1;
+    margin-top: 215px;
+    margin-left: 295px;
+}
+
+h2 span {
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    height: 100px;
+    position: absolute;
+    width: 20px;
+    left: 100px;
+    top: 0;
+    transform-origin: bottom center;
+}
+
+.char1 {
+    transform: rotate(6deg);
+}
+
+.char2 {
+    transform: rotate(12deg);
+}
+
+.char3 {
+    transform: rotate(18deg);
+}
+
+.char4 {
+    transform: rotate(24deg);
+}
+
+.char5 {
+    transform: rotate(30deg);
+}
+
+.char6 {
+    transform: rotate(36deg);
+}
+
+.char7 {
+    transform: rotate(42deg);
+}
+
+.char8 {
+    transform: rotate(48deg);
+}
+
+.char9 {
+    transform: rotate(54deg);
+}
+
+.char10 {
+    transform: rotate(60deg);
+}
+
+.char11 {
+    transform: rotate(66deg);
+}
+
+.char12 {
+    transform: rotate(72deg);
+}
+
+.char13 {
+    transform: rotate(78deg);
+}
+
+.char14 {
+    transform: rotate(84deg);
+}
+
+.char15 {
+    transform: rotate(90deg);
+}
+
+.char16 {
+    transform: rotate(96deg);
+}
+
+.char17 {
+    transform: rotate(102deg);
+}
+
+.char18 {
+    transform: rotate(108deg);
+}
+
+.char19 {
+    transform: rotate(114deg);
+}
+
 .container-game {
     /*background-image: url(images/background3.jpg);
     background-size: 1100px;
