@@ -33,7 +33,7 @@ class Card extends HTMLElement {
         verso.classList.add('verso');
         var recto = document.createElement("IMG");
         recto.classList.add('recto');
-        verso.setAttribute("src", "images/classic.png");
+        verso.setAttribute("src", "images/blueRibbonArtisancards.png");
         recto.setAttribute("src", "https://picsum.photos/200/300?random=" + i);
         this.appendChild(verso);
         this.appendChild(recto);

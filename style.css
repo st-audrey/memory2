@@ -89,7 +89,7 @@ body {
 
 .row-start {
     background-image: url(images/welcome.jpg);
-    height: 230px;
+    height: 210px;
     border-radius:15px;
 }
 
@@ -221,6 +221,16 @@ h2 span {
 button {
     font-family: 'Open Sans', sans-serif;
 }
+
+.modal-theme-card{
+    width:180px;
+}
+
+.modal-theme-card:hover {
+    transform:scale(.97);
+    transition:.2s;
+}
+
 
 .container-game {
     /*background-image: url(images/background3.jpg);

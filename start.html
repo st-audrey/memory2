@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Memory welcome page</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="icons/brain.ico"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
@@ -21,13 +22,29 @@
             </div>
         </div>
         <div class="modal" id="modal" tabindex="-1">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Choose a theme :</h5>                    
                     </div>
                     <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                        <div class="row">
+                            <div class="col-2">
+                                <img class="modal-theme-card" src="images/blueRibbonArtisancards.png" />
+                            </div>
+                            <div class="col-2">
+                                <img class="modal-theme-card" src="images/bonafideplayingcards.jpg" />
+                            </div>
+                            <div class="col-2">
+                                <img class="modal-theme-card" src="images/jungleArtisancards.png" />
+                            </div>
+                            <div class="col-2">
+                                <img class="modal-theme-card" src="images/artOfPlayArtisancards.png" />
+                            </div>
+                            <div class="col-2">
+                                <img class="modal-theme-card" src="images/bicyclecards.png" />
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -68,7 +85,16 @@
             document.addEventListener("keydown", (event) => {
                 $('#modal').modal('show');
             })
-                    
+
+            /*function playAudio(audio){
+                new Audio(audio).play();
+            }
+
+            document.addEventListener("click", (event) => {
+                var soundClick = "sounds/Mouse-Click-00-c-FesliyanStudios.mp3"
+                playAudio(soundClick);
+            })*/
+            
             var clignotement = function () {
                 if (document.getElementById('txt-start').style.visibility == 'visible') {
                     document.getElementById('txt-start').style.visibility = 'hidden';
