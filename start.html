@@ -25,30 +25,30 @@
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Choose a theme :</h5>                    
+                        <h5 class="modal-title">Choose a theme :</h5>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-2">
-                                <img class="modal-theme-card" src="images/blueRibbonArtisancards.png" />
+                                <img class="modal-theme-card" src="images/blueRibbonArtisancards.png" data-id="1"/>
                             </div>
                             <div class="col-2">
-                                <img class="modal-theme-card" src="images/bonafideplayingcards.jpg" />
+                                <img class="modal-theme-card" src="images/bonafideplayingcards.jpg" data-id="2"/>
                             </div>
                             <div class="col-2">
-                                <img class="modal-theme-card" src="images/jungleArtisancards.png" />
+                                <img class="modal-theme-card" src="images/jungleArtisancards.png" data-id="3"/>
                             </div>
                             <div class="col-2">
-                                <img class="modal-theme-card" src="images/artOfPlayArtisancards.png" />
+                                <img class="modal-theme-card" src="images/artOfPlayArtisancards.png" data-id="4"/>
                             </div>
                             <div class="col-2">
-                                <img class="modal-theme-card" src="images/bicyclecards.png" />
+                                <img class="modal-theme-card" src="images/bicyclecards.png" data-id="5" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="window.location.href='index.html';">Deal cards !</button>
+                        <button type="button" class="btn btn-primary" id="btn-start">Deal cards !</button>
                     </div>
                 </div>
             </div>
@@ -77,11 +77,12 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="Card.js"></script>
+    <script type="text/javascript" src="Game.js"></script>
     <script type="text/javascript">
         $(function () {
             $("h2").lettering();
-         
+
             document.addEventListener("keydown", (event) => {
                 $('#modal').modal('show');
             })
@@ -93,8 +94,30 @@
             document.addEventListener("click", (event) => {
                 var soundClick = "sounds/Mouse-Click-00-c-FesliyanStudios.mp3"
                 playAudio(soundClick);
+
             })*/
-            
+
+            var chosenTheme = "";
+            var btnStart = document.getElementById("btn-start");
+            btnStart.addEventListener("click", function () {
+                var chosenCard = document.getElementById("chosen-theme");
+                chosenTheme = chosenCard.dataset.id;
+                window.location.href = 'index.html?theme=' + chosenTheme;               
+            });
+
+            var cards = document.getElementsByClassName("modal-theme-card");
+
+            for (var item of cards) {
+                item.addEventListener("click", function () {
+                    for (var item of cards) {
+                        item.classList.remove("modal-theme-card-active");
+                        item.removeAttribute("id");
+                    }
+                    this.classList.add("modal-theme-card-active");
+                    this.setAttribute("id", "chosen-theme");
+                });
+            };
+
             var clignotement = function () {
                 if (document.getElementById('txt-start').style.visibility == 'visible') {
                     document.getElementById('txt-start').style.visibility = 'hidden';

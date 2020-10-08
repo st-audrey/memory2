@@ -1,8 +1,9 @@
 class Game {   
 
-    constructor(level, life) {
+    constructor(level, life, theme) {
         this.level = level;
         this.life = life;
+        this.theme = theme;
         this.hasFlippedCard = false;
         this.isLocked = false;
         this.successPair = 0;
@@ -13,9 +14,12 @@ class Game {
     initBoard() {
         this.nbPair = 0;
         var board = document.getElementById("memory-board");
+        var cards = document.getElementsByClassName("verso");
         board.innerHTML = "";
         this.successPair = 0;
-
+   
+        
+        
         if (this.level == 1) {
             this.nbPair = 2;
         } else if (this.level == 2) {
@@ -25,7 +29,7 @@ class Game {
             board.setAttribute("style", "width: 960px;");
             this.nbPair = 6;
         }
-        
+
         var tab = [];
 
         for (let i = 0; i < this.nbPair; i++) {
@@ -53,6 +57,28 @@ class Game {
             board.appendChild(tabShuffle[i]);
         }
 
+        if (this.theme == 1) {
+            for (var item of cards) {
+                item.setAttribute("src", "images/blueRibbonArtisancards.png");
+            }
+        } else if (this.theme == 2) {
+            for (var item of cards) {
+                item.setAttribute("src", "images/bonafideplayingcards.jpg");
+            }
+        } else if (this.theme == 3) {
+            for (var item of cards) {
+                item.setAttribute("src", "images/jungleArtisancards.png");
+            }
+        } else if (this.theme == 4) {
+            for (var item of cards) {
+                item.setAttribute("src", "images/artOfPlayArtisancards.png");
+            }
+        } else if (this.theme == 5) {
+            for (var item of cards) {
+                item.setAttribute("src", "images/bicyclecards.png");
+            }
+        };
+
         var allCards = document.querySelectorAll(".memory-card");
 
         setTimeout(() => {
@@ -66,6 +92,7 @@ class Game {
             allCards[i].classList.remove("flip");
             }          
         }, 4500);
+
     }
 
     showLife(life) {

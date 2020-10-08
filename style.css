@@ -83,7 +83,7 @@ body {
     border-radius: 100px;
     width: 200px;
     height: 200px;    
-    margin-top:140px;
+    margin-top:135px;
     margin-left: 40%;
 }
 
@@ -229,6 +229,12 @@ button {
 .modal-theme-card:hover {
     transform:scale(.97);
     transition:.2s;
+}
+
+.modal-theme-card-active {
+    transform: scale(.97);
+    border-radius: 5px;
+    border: double 3px red;
 }
 
 
