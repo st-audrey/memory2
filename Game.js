@@ -77,6 +77,8 @@ class Game {
             for (var item of cards) {
                 item.setAttribute("src", "images/bicyclecards.png");
             }
+        } else {
+            window.location.href = '404.html';
         };
 
         var allCards = document.querySelectorAll(".memory-card");
